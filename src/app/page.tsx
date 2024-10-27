@@ -10,7 +10,6 @@ import ApiError from '@/components/api-error';
 import CustomPagination from '@/components/custom-pagination';
 import ProductCard from '@/components/product-card';
 
-
 const HomePage = () => {
   const dispatch = useDispatch();
   const page = useSelector((state: RootState) => state.pagination.currentPage);

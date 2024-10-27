@@ -1,8 +1,8 @@
 import Image, { ImageProps } from 'next/image';
 import { useState } from 'react';
 
-type ImageFallbackProps = ImageProps & {
-  fallbackSrc?: string; // Optional fallback image source
+interface ImageFallbackProps extends ImageProps {
+  fallbackSrc?: string; 
 };
 
 const ImageFallback = ({

@@ -1,5 +1,6 @@
 "use client"
 import { useState } from "react"
+import Link from "next/link"
 import Image from "next/image"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { Button } from "@/components/ui/button"
@@ -7,7 +8,7 @@ import { Minus, Plus, Trash2 } from "lucide-react"
 import { RootState } from "@/store"
 import { useDispatch, useSelector } from "react-redux"
 import { decreaseQuantity, increaseQuantity, removeFromCart } from "@/store/slices/cartSlice"
-import Link from "next/link"
+import ImageFallback from "./image-fallback"
 
 
 export default function CartMenu({ children }: { children: React.ReactNode }) {
@@ -36,7 +37,7 @@ export default function CartMenu({ children }: { children: React.ReactNode }) {
               <h3 className="font-medium leading-none">Your Cart</h3>
               {cartItems.map((item) => (
                 <div key={item.id} className="flex items-center gap-4">
-                  <Image src={item.image} alt={item.title} width={50} height={50} className="rounded-md" />
+                  {/* <ImageFallback fallbackSrc="/placeholder.png" src={item.image} alt={item.title} width={50} height={50} className="rounded-md" /> */}
                   <div className="flex-1">
                     <h4 className="text-sm font-medium">{item.title}</h4>
                     <p className="text-sm text-muted-foreground">${item.price}</p>

@@ -12,7 +12,6 @@ import { clearCheckoutDetails } from "@/store/slices/checkoutSlice";
 import { OrderDetails, OrderItem } from "@/type/order";
 import { CheckCircle, Mail, MapPin, Phone, ShoppingBag } from "lucide-react";
 
-// pages/thank-you.tsx
 const ThankYouPage = () => {
   const dispatch = useDispatch();
   const router = useRouter();
