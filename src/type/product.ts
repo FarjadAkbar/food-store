@@ -14,6 +14,7 @@ export interface Nutrient {
 }
 
 export interface ProductDetail {
+  id: number;
   title: string
   image: string
   category: string

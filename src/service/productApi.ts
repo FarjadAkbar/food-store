@@ -1,6 +1,7 @@
 // src/api/productApi.ts
 import axios from 'axios';
 import { BASE_URL, API_KEY, FIXED_PRICE } from '@/config';
+import { ProductDetail } from '@/type/product';
 
 export const fetchProducts = async (currentPage: number, productsPerPage: number, query: string) => {
   const offset = (currentPage - 1) * productsPerPage;
@@ -25,7 +26,7 @@ export const fetchProducts = async (currentPage: number, productsPerPage: number
 
 
 
-export const fetchProductDetail = async (id: number) => {
+export const fetchProductDetail = async (id: number): Promise<ProductDetail> => {
   const response = await axios.get(`${BASE_URL}/${id}`, {
     params: {
       apiKey: API_KEY,

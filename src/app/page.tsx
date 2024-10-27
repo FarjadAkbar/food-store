@@ -1,10 +1,8 @@
 "use client";
-import { useState } from 'react';
 import Head from 'next/head';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@/store';
 import { useProducts } from '@/hooks/useProducts';
-import { addToCart } from '@/store/slices/cartSlice';
 import { setPage } from '@/store/slices/paginationSlice';
 import { Product } from '@/type/product';
 import Loading from '@/components/loading';

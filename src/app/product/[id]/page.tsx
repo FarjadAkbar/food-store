@@ -1,11 +1,12 @@
 "use client";
 import React from 'react';
+import Head from 'next/head';
 import { useParams } from 'next/navigation'
 import { useProductDetail } from '@/hooks/useProducts';
 import ApiError from '@/components/api-error';
 import Loading from '@/components/loading';
 import Image from 'next/image';
-import { Heart, ShoppingCart, Star } from 'lucide-react';
+import { Heart, Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -22,8 +23,30 @@ const ProductDetail = () => {
       const apiError = error as { name: string; message: string };
       return <ApiError error={apiError} />;
     }
+
+    if (!data) {
+      return <div className="flex flex-col items-center justify-center min-h-[400px]">
+      <p className="text-lg font-medium text-muted-foreground">
+        No product found
+      </p>
+    </div>
+    }
     
     return (
+      <>
+      <Head>
+        <title>{`${data.title} - ${data.category}`}</title>
+        <meta name="description" content={data.description || 'Find out more about this product.'} />
+        <meta property="og:title" content={data.title} />
+        <meta property="og:description" content={data.description || 'Find out more about this product.'} />
+        <meta property="og:image" content={data.image} />
+        <meta property="og:url" content={`https://yourwebsite.com/product/${id}`} />
+        <meta property="og:type" content="product" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={data.title} />
+        <meta name="twitter:description" content={data.description || 'Discover this product on our store.'} />
+        <meta name="twitter:image" content={data.image} />
+      </Head>
         <div className="container mx-auto px-4 py-8">
         <div className="grid md:grid-cols-2 gap-8">
           <div>
@@ -127,6 +150,7 @@ const ProductDetail = () => {
           </TabsContent>
         </Tabs>
       </div>
+      </>
     );
 };
 
