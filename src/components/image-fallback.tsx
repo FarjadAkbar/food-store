@@ -5,14 +5,30 @@ type ImageFallbackProps = ImageProps & {
   fallbackSrc?: string; // Optional fallback image source
 };
 
-const ImageFallback = ({ src, fallbackSrc = 'https://placehold.co/600x400', alt, ...props }: ImageFallbackProps) => {
+const ImageFallback = ({
+  src,
+  fallbackSrc = '/placholder.png',
+  alt,
+  layout = 'fill',
+  objectFit = 'cover',
+  ...props
+}: ImageFallbackProps) => {
   const [imgSrc, setImgSrc] = useState(src);
 
   const handleError = () => {
-    setImgSrc(fallbackSrc); // Set fallback image when original fails to load
+    setImgSrc(fallbackSrc); // Set fallback image when the original fails to load
   };
 
-  return <Image src={imgSrc} onError={handleError} alt={alt} {...props} />;
+  return (
+    <Image
+      src={imgSrc}
+      onError={handleError}
+      alt={alt}
+      layout={layout}
+      objectFit={objectFit}
+      {...props}
+    />
+  );
 };
 
 export default ImageFallback;

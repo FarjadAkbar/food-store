@@ -20,7 +20,6 @@ const ProductCard = ({ product }: { product: Product }) => {
           <div className="aspect-square relative overflow-hidden rounded-t-lg">
             <ImageFallback
               src={product.image}
-              fallbackSrc="https://placehold.co/600x400"
               alt={product.title}
               layout="fill"
               objectFit="cover"

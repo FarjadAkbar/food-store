@@ -5,7 +5,6 @@ import { useParams } from 'next/navigation'
 import { useProductDetail } from '@/hooks/useProducts';
 import ApiError from '@/components/api-error';
 import Loading from '@/components/loading';
-import Image from 'next/image';
 import { Heart, Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
@@ -13,6 +12,7 @@ import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Separator } from '@/components/ui/separator';
 import AddToCart from '@/components/add-to-cart';
+import ImageFallback from '@/components/image-fallback';
 
 const ProductDetail = () => {
     const { id } = useParams();
@@ -51,7 +51,7 @@ const ProductDetail = () => {
         <div className="grid md:grid-cols-2 gap-8">
           <div>
             <div className="aspect-square relative overflow-hidden rounded-lg mb-4">
-              <Image
+              <ImageFallback
                 src={data.image}
                 alt={data.title}
                 layout="fill"
@@ -62,7 +62,7 @@ const ProductDetail = () => {
             <div className="grid grid-cols-4 gap-4">
               {data.images.map((img, index) => (
                 <div key={index} className="aspect-square relative overflow-hidden rounded-lg">
-                  <Image
+                  <ImageFallback
                     src={img}
                     alt={`Product image ${index + 1}`}
                     layout="fill"
